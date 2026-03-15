@@ -1,0 +1,28 @@
+# Docker & Mailcow secrets
+mailcow.conf
+.env
+.env.local
+REPLACE_WITH_SECURE_*
+
+# Data & Volumes (CRITICAL: DO NOT PUSH)
+data/assets/ssl/*
+!data/assets/ssl-example
+data/conf/rspamd/local.d/settings.conf
+data/conf/postfix/extra.cf
+data/conf/postfix/main.cf.bak
+mysql-vol-1/
+vmail-vol-1/
+crypt-vol-1/
+rspamd-vol-1/
+
+# Backups
+backup_*.tar.zst
+*.bak
+*.old
+
+# System & OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+\n# Antigravity Metadata\n.antigravity/\nSKILLS.md\n.gemini/\n.agents/\n_agents/\n_agent/
