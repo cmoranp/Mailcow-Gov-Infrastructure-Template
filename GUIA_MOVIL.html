@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Configuración Móvil | Servicio de Correo Pilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c5a059; /* Gold Institutional */
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent: #38bdf8;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .config-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .config-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .config-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .config-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .value {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid transparent;
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .step-list {
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div style="font-size: 40px;">🏛️</div>
+        <h1>Configuración Móvil</h1>
+        <p>Servicio de Correo Pilot - Seguridad de Grado Gubernamental</p>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('ios')">Apple iOS</div>
+        <div class="tab" onclick="showTab('android')">Android / Otros</div>
+    </div>
+
+    <div id="ios-content">
+        <div class="config-card">
+            <h3>📱 Opción Recomendada <span class="badge">EASY</span></h3>
+            <p><strong>Microsoft Exchange / ActiveSync</strong></p>
+            <p>Sincroniza Correo, Contactos y Calendario de forma nativa.</p>
+            <p>Servidor: <span class="value">mail.example.com</span></p>
+            <p>Dominio: (Dejar en blanco)</p>
+            <p>SSL/TLS: <span class="value">Activado</span></p>
+        </div>
+        <div class="config-card">
+            <h3>⚙️ Configuración Manual (IMAP)</h3>
+            <p>Servidor IMAP: <span class="value">mail.example.com</span> (Puerto 993)</p>
+            <p>Servidor SMTP: <span class="value">mail.example.com</span> (Puerto 465)</p>
+        </div>
+    </div>
+
+    <div id="android-content" style="display: none;">
+        <div class="config-card">
+            <h3>🤖 Outlook / Gmail App</h3>
+            <p>1. Añadir cuenta de tipo <strong>Exchange</strong>.</p>
+            <p>2. Servidor: <span class="value">mail.example.com</span></p>
+            <p>3. Seguridad: <strong>SSL/TLS (Todos los certificados)</strong></p>
+        </div>
+        <div class="config-card">
+            <h3>📧 K-9 Mail / Samsung Mail</h3>
+            <p>Usar configuración <strong>IMAP</strong>:</p>
+            <p>Entrante: <span class="value">mail.example.com</span> Puerto 993</p>
+            <p>Saliente: <span class="value">mail.example.com</span> Puerto 465</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Este es un servidor piloto de pruebas. Use sus credenciales institucionales.</p>
+        <p>&copy; 2026 Infraestructura Segura</p>
+    </div>
+</div>
+
+<script>
+    function showTab(type) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        if (type === 'ios') {
+            document.getElementById('ios-content').style.display = 'block';
+            document.getElementById('android-content').style.display = 'none';
+            document.querySelector('.tab:nth-child(1)').classList.add('active');
+        } else {
+            document.getElementById('ios-content').style.display = 'none';
+            document.getElementById('android-content').style.display = 'block';
+            document.querySelector('.tab:nth-child(2)').classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
